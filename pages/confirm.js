@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import { useRouter } from 'next/router'
 import RideSelector from './components/RideSelector'
-
+import Link from 'next/link'
 
 const Confirm = () => {
 
@@ -15,9 +15,9 @@ const Confirm = () => {
  console.log("pickup",pickup);
  console.log("dropoff",dropoff);
 
-   const [ pickupCoordinates,setPickUpCoordinates ] = useState()
-   const [ dropofCoordinates,setDropoffCoordinates ] = useState()
-
+   const [ pickupCoordinates,setPickUpCoordinates ] = useState([0,0])
+   const [ dropofCoordinates,setDropoffCoordinates ] = useState([0,0])
+   
     const getPickupCoordinates =(pickup) => { 
         
          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?`+
@@ -64,13 +64,21 @@ const Confirm = () => {
 
     return (
         <Wrapper>
+               <ButtonContainer>
+                 <Link href="/search" >
+                  <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png"/>
+                 </Link>
+               </ButtonContainer>
              <Map 
                pickupCoordinates={pickupCoordinates}
                dropofCoordinates={dropofCoordinates}
              />
 
              <RideContainer>
-              <RideSelector />
+              <RideSelector 
+                pickupCoordinates={pickupCoordinates}
+                dropofCoordinates={dropofCoordinates}
+              />
                <ConfirmButtonContainer>
                   <ConfirmButton>
                     Confirm UberX
@@ -101,5 +109,13 @@ flex-1 flex flex-col h-1/2
 const Wrapper = tw.div`
   flex h-screen flex-col
 
+`
+
+const ButtonContainer = tw.div`
+rounded-full absolute top-4 left-4 z-10 bg-white shadow-md cursor-pointer
+`
+
+const BackButton = tw.img`
+h-full object-contain
 `
 
