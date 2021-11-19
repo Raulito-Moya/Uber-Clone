@@ -13,8 +13,9 @@ export default function Home() {
 
   const [user, setUser] = useState()
   const router = useRouter() 
-
+ //console.log(router);
   useEffect(()=> { 
+    
     return onAuthStateChanged(auth, user => {
    
       if(user){
@@ -25,6 +26,7 @@ export default function Home() {
       } else {
         setUser(null)
         router.push('/login')
+        
       }
 
     })

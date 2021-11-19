@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import tw from "tailwind-styled-components"
 import Link from 'next/link'
 
-export default function search() {
+export default function Search() {
 
    const [pickup, setPickup] = useState("")
    const [dropoff, setDropoff] = useState("")
 
-   console.log(pickup);
-    console.log(dropoff);
+   //console.log(pickup);
+   // console.log(dropoff);
 
     return (
          <Wrapper>

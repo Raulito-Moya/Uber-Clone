@@ -12,8 +12,8 @@ const Confirm = () => {
  const router = useRouter()
  const { pickup,dropoff} = router.query
   
- console.log("pickup",pickup);
- console.log("dropoff",dropoff);
+//console.log("pickup",pickup);
+//console.log("dropoff",dropoff);
 
    const [ pickupCoordinates,setPickUpCoordinates ] = useState([0,0])
    const [ dropofCoordinates,setDropoffCoordinates ] = useState([0,0])
@@ -45,7 +45,7 @@ const Confirm = () => {
         )
          .then(response => response.json())
          .then( data => {
-             console.log("Dropoff");
+           //  console.log("Dropoff");
            
              setDropoffCoordinates(data.features[0].center)
          })
@@ -60,7 +60,7 @@ const Confirm = () => {
 
    },[pickup, dropoff])
 
-   console.log(pickupCoordinates);
+//console.log(pickupCoordinates);
 
     return (
         <Wrapper>

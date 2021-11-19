@@ -8,7 +8,7 @@ mapboxgl.accessToken =
 
 
  const Map = (props) => {
-    console.log(props);
+  //  console.log(props);
    
 
   useEffect(() => { 
